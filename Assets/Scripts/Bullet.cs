@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         if (playerTransform)
         {
             if ((playerTransform.position - transform.position).sqrMagnitude > 625)
-                Destroy(gameObject);
+                gameObject.SetActive(false);
         }
 
         transform.position += 20 * transform.forward * Time.deltaTime;

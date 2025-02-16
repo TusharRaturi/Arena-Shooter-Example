@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public UnityEvent playerDeath;
     public LayerMask enemyLayer;
 
+    public ObjectPool bulletPool;
+
     public float cooldownTimer = 0.0f;
 
     // Start is called before the first frame update
@@ -59,21 +61,23 @@ public class Player : MonoBehaviour
             }
         }
 
+        Quaternion requiredRotation;
         if (collidersDetected.Length == 0)
         {
-            GameObject newBulletGO = Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-            newBulletGO.GetComponent<Bullet>().playerTransform = transform;
+            requiredRotation = Quaternion.identity;
         }
         else
         {
             Transform targetEnemyTransform = collidersDetected[closestIndex].transform;
             Vector3 direction = targetEnemyTransform.position - transform.position;
-            Quaternion wantedRotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
-
-            GameObject newBulletGO = Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), wantedRotation);
-            newBulletGO.GetComponent<Bullet>().playerTransform = transform;
+            requiredRotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
         }
 
+        GameObject newBulletGO = bulletPool.GetAvailableObject();
+        newBulletGO.transform.position = transform.position + new Vector3(0, 1, 0);
+        newBulletGO.transform.rotation = requiredRotation;
+
+        newBulletGO.GetComponent<Bullet>().playerTransform = transform;
 
         cooldownTimer = 0.0f;
     }
