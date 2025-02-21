@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66d27db53192d048a69f6663567b244, type: 3}
   m_Name: Spawner1
   m_EditorClassIdentifier: 
-  prefabName: Test
-  numberOfPrefabsToCreate: 10
+  prefabName: Bullet
+  numberOfPrefabsToCreate: 9
   spawnPoints:
   - {x: 1, y: 1, z: 1}
   - {x: 2, y: 2, z: 2}
