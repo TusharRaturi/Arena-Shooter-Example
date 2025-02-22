@@ -627,7 +627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1183050996
 Transform:
   m_ObjectHideFlags: 0
@@ -802,7 +802,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1688705969}
-  - component: {fileID: 1688705970}
   - component: {fileID: 1688705968}
   - component: {fileID: 1688705967}
   - component: {fileID: 1688705966}
@@ -896,21 +895,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1688705970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688705965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f6cc1af2073bd4882e47fe1621ca46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testButton: {fileID: 0}
-  testText: {fileID: 0}
-  slider: {fileID: 0}
 --- !u!1001 &4618168079587235060
 PrefabInstance:
   m_ObjectHideFlags: 0
