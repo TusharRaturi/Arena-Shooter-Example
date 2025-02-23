@@ -15,12 +15,6 @@ public class Player : MonoBehaviour
 
     public float cooldownTimer = 0.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -39,7 +33,9 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 Shoot();
-                audioSource.Play();
+
+                if (!GameManager.IsMute)
+                    audioSource.Play();
             }
         }
     }
