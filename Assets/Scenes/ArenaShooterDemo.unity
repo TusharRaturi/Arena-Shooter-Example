@@ -1210,6 +1210,11 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1188222784}
+    - target: {fileID: 1777998740299211351, guid: 904ccb1a9d1b3a84a980187e8394d9e8,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6323385164517125301, guid: 904ccb1a9d1b3a84a980187e8394d9e8,
         type: 3}
       propertyPath: m_LocalPosition.x

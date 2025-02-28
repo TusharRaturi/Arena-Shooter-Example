@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public GameObject bulletPrefab;
     public UnityEvent playerDeath;
     public LayerMask enemyLayer;
     public AudioSource audioSource;
