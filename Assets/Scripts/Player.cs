@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,18 @@ public class Player : MonoBehaviour
     public ObjectPool bulletPool;
 
     public float cooldownTimer = 0.0f;
+
+    public FixedJoystick joystick;
+
+    public ShootButton shootButton_Android;
+#if UNITY_ANDROID
+    
+#endif
+
+    private void Awake()
+    {
+        //shootButton_Android.onClick.AddListener(ShootPressed_Android);
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,10 +39,27 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
             transform.position += 7 * Vector3.right * Time.deltaTime;
 
+
+        Vector3 dir = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
+        transform.position += 7 * dir * Time.deltaTime;
+
+
+#if UNITY_ANDROID
+
+#endif
+
         cooldownTimer += Time.deltaTime;
         if (cooldownTimer > 0.2f)
         {
             if (Input.GetKey(KeyCode.Space))
+            {
+                Shoot();
+
+                if (!GameManager.IsMute)
+                    audioSource.Play();
+            }
+
+            if (shootButton_Android.PointerDown)
             {
                 Shoot();
 
