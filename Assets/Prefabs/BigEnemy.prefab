@@ -28,9 +28,9 @@ Transform:
   m_GameObject: {fileID: 756424636578985569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7927207425448070824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 667a16d87de603f4d97a91d2d823d4cf, type: 2}
+  - {fileID: 2100000, guid: 657cd6565a87c1b4db73aac246b330f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,10 +116,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7927207425448070824}
-  - component: {fileID: 2459371841167088522}
+  - component: {fileID: 5709838382431142984}
   - component: {fileID: 8085488480379530203}
   m_Layer: 3
-  m_Name: Enemy
+  m_Name: BigEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ Transform:
   - {fileID: 2262985124746409816}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2459371841167088522
+--- !u!114 &5709838382431142984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,12 +150,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4197468589655818911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3fa38afddca3e44cb2c48636ce9ac77, type: 3}
+  m_Script: {fileID: 11500000, guid: e5a7577199d40bd4b89d52ce11d4c28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  meshRenderer: {fileID: 6628983750710372297}
-  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &8085488480379530203
 Rigidbody:
   m_ObjectHideFlags: 0

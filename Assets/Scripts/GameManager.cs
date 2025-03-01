@@ -3,6 +3,23 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager gameManagerInstance;
+
+    public static GameManager Instance { get => gameManagerInstance; }
+
+    private void Awake()
+    {
+        if (gameManagerInstance == null)
+        {
+            gameManagerInstance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private static UnityEvent<bool> muteToggleEvent;
 
     private static bool isMute = false;
@@ -19,12 +36,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void SetMute(bool mute)
+    public void SetMute(bool mute)
     {
         isMute = mute;
     }
 
-    public static void ToggleMute()
+    public void ToggleMute()
     {
         isMute = !isMute;
     }
