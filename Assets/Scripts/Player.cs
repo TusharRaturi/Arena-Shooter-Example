@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -15,12 +12,37 @@ public class Player : MonoBehaviour
 
     public float cooldownTimer = 0.0f;
 
+    private float speed = 7.0f;
+
     public FixedJoystick joystick;
 
     public ShootButton shootButton_Android;
-#if UNITY_ANDROID
-    
-#endif
+
+    private float shootingSpeed = 0.2f;
+
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+        set
+        {
+            speed = value;
+        }
+    }
+
+    public float ShootingSpeed
+    {
+        get
+        {
+            return shootingSpeed;
+        }
+        set
+        {
+            shootingSpeed = value;
+        }
+    }
 
     private void Awake()
     {
@@ -31,25 +53,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
-            transform.position += 7 * Vector3.forward * Time.deltaTime;
+            transform.position += speed * Vector3.forward * Time.deltaTime;
         if (Input.GetKey(KeyCode.S))
-            transform.position += 7 * Vector3.back * Time.deltaTime;
+            transform.position += speed * Vector3.back * Time.deltaTime;
         if (Input.GetKey(KeyCode.A))
-            transform.position += 7 * Vector3.left * Time.deltaTime;
+            transform.position += speed * Vector3.left * Time.deltaTime;
         if (Input.GetKey(KeyCode.D))
-            transform.position += 7 * Vector3.right * Time.deltaTime;
+            transform.position += speed * Vector3.right * Time.deltaTime;
 
 
         Vector3 dir = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
-        transform.position += 7 * dir * Time.deltaTime;
-
-
-#if UNITY_ANDROID
-
-#endif
+        transform.position += speed * dir * Time.deltaTime;
 
         cooldownTimer += Time.deltaTime;
-        if (cooldownTimer > 0.2f)
+        if (cooldownTimer > shootingSpeed)
         {
             if (Input.GetKey(KeyCode.Space))
             {
