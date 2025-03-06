@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public enum EnemyType
+public enum EnemyState
 {
-    SmallEnemy,
-    BigEnemy
+    Moving, Still
 }
 
 public class Enemy : MonoBehaviour
@@ -12,6 +11,15 @@ public class Enemy : MonoBehaviour
     public MeshRenderer meshRenderer;
 
     public Color color;
+
+    public EnemyState enemyState;
+
+    private static int enemiesAvailable = 0;
+
+    private void Awake()
+    {
+        enemiesAvailable++;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +33,25 @@ public class Enemy : MonoBehaviour
         if (player)
         {
             Vector3 enemyToPlayer = player.transform.position - transform.position;
+
+            Debug.Log(enemyToPlayer.magnitude);
+
+            // Evaluating states
+            if (enemiesAvailable >= 4)
+                enemyState = EnemyState.Still;
+            else if (enemiesAvailable < 4)
+                enemyState = EnemyState.Moving;
+
             enemyToPlayer.Normalize();
 
-            transform.position += 5 * enemyToPlayer * Time.deltaTime;
+            // Transformations according to the states
+            if (enemyState == EnemyState.Moving)
+                transform.position += 5 * enemyToPlayer * Time.deltaTime;
         }
+    }
+
+    private void OnDestroy()
+    {
+        enemiesAvailable--;
     }
 }

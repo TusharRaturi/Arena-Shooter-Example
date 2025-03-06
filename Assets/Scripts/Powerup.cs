@@ -35,7 +35,7 @@ public class Powerup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Player pl = other.GetComponent<Player>();
-            OnApply(pl);
+            Apply(pl);
         }
     }
 }

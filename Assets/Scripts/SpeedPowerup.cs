@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class SpeedPowerup : Powerup
 {
     public float speedMultiplier = 2.0f;
@@ -11,6 +13,7 @@ public class SpeedPowerup : Powerup
 
     protected override void OnRemove(Player player)
     {
+        Debug.Log(originalSpeed);
         player.Speed = originalSpeed;
     }
 }
