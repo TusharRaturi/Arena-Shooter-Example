@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
 
     private float shootingSpeed = 0.2f;
 
+    private CommandInvoker playerCommandInvoker;
+
     public float Speed
     {
         get
@@ -47,20 +49,49 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         //shootButton_Android.onClick.AddListener(ShootPressed_Android);
+        playerCommandInvoker = new CommandInvoker();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
+        {
             transform.position += speed * Vector3.forward * Time.deltaTime;
+
+            MoveCommand newMoveCom = new MoveCommand(transform, speed, Vector3.forward);
+            playerCommandInvoker.AddCommand(newMoveCom);
+        }
         if (Input.GetKey(KeyCode.S))
+        {
+            transform.position += speed * Vector3.back * Time.deltaTime;
+
+            MoveCommand newMoveCom = new MoveCommand(transform, speed, Vector3.back);
+            playerCommandInvoker.AddCommand(newMoveCom);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += speed * Vector3.left * Time.deltaTime;
+
+            MoveCommand newMoveCom = new MoveCommand(transform, speed, Vector3.left);
+            playerCommandInvoker.AddCommand(newMoveCom);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += speed * Vector3.right * Time.deltaTime;
+
+            MoveCommand newMoveCom = new MoveCommand(transform, speed, Vector3.right);
+            playerCommandInvoker.AddCommand(newMoveCom);
+        }
+
+        /*if (Input.GetKey(KeyCode.S))
             transform.position += speed * Vector3.back * Time.deltaTime;
         if (Input.GetKey(KeyCode.A))
             transform.position += speed * Vector3.left * Time.deltaTime;
         if (Input.GetKey(KeyCode.D))
-            transform.position += speed * Vector3.right * Time.deltaTime;
-
+            transform.position += speed * Vector3.right * Time.deltaTime;*/
+        if (Input.GetKey(KeyCode.Q))
+            playerCommandInvoker.Undo();
 
         Vector3 dir = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
         transform.position += speed * dir * Time.deltaTime;

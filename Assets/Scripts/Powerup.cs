@@ -10,6 +10,7 @@ public class Powerup : MonoBehaviour
     public void Apply(Player player)
     {
         visualGO.SetActive(false);
+        GetComponent<SphereCollider>().enabled = false;
         OnApply(player);
         StartCoroutine(RemoveWaiter(player));
     }
